@@ -1,0 +1,65 @@
+unit Frm2;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,Datasorce, Grids, DBGrids, StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    dbgrd2: TDBGrid;
+    btnAll: TButton;
+    btnCoke: TButton;
+    btnWater: TButton;
+    dbgrdTime: TDBGrid;
+    btnSortt: TButton;
+    procedure btnAllClick(Sender: TObject);
+    procedure btnCokeClick(Sender: TObject);
+    procedure btnWaterClick(Sender: TObject);
+    procedure btnSorttClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TForm2.btnAllClick(Sender: TObject);
+begin
+      DataModule1.qry1.SQL.Clear;
+      DataModule1.qry1.SQL.Add('SELECT * FROM Table1');
+      DataModule1.qry1.Open;
+end;
+
+procedure TForm2.btnCokeClick(Sender: TObject);
+begin
+ DataModule1.qry1.SQL.Clear;
+ DataModule1.qry1.SQL.Add('SELECT Drink,DrinkAmount,TransactionNumber From Table1 WHERE Drink LIKE "%Coke%"'  ) ;
+ DataModule1.qry1.Open;
+end;
+
+procedure TForm2.btnWaterClick(Sender: TObject);
+begin
+  DataModule1.qry1.SQL.Clear;
+  DataModule1.qry1.SQL.Add('SELECT Drink,DrinkAmount,TransactionNumber From Table1 WHERE Drink LIKE "%Water%"'  ) ;
+  DataModule1.qry1.Open;
+
+
+end;
+
+procedure TForm2.btnSorttClick(Sender: TObject);
+begin
+DataModule1.qry2.SQL.Clear;
+DataModule1.qry2.SQL.Add('SELECT * From Table2' );
+DataModule1.qry2.Open;
+end;
+
+end.

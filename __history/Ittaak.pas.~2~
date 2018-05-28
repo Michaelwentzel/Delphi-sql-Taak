@@ -1,0 +1,77 @@
+unit Ittaak;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,Datasorce, StdCtrls, Buttons, Grids, DBGrids,Frm2,NewmemberUnit;
+
+type
+  TForm1 = class(TForm)
+    btnClose: TBitBtn;
+    edtUsername: TEdit;
+    lblUsername: TLabel;
+    btnNew: TButton;
+    btnOK: TBitBtn;
+    btnLogout: TButton;
+  
+    procedure btnNewClick(Sender: TObject);
+    procedure btnOKClick(Sender: TObject);
+    procedure btnLogoutClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+
+     sUsername:string;
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  sUsername:string;
+
+implementation
+
+
+{$R *.dfm}
+
+
+
+procedure TForm1.btnNewClick(Sender: TObject);
+begin
+Form3.Show;
+end;
+
+procedure TForm1.btnOKClick(Sender: TObject);
+
+begin
+ sUsername :=  edtUsername.Text;
+
+      DataModule1.tbl2.Open;
+      DataModule1.tbl2.Insert;
+      DataModule1.tbl2.FieldByName('Till Clock').AsDateTime := TDateTime(Now);
+      DataModule1.tbl2.FieldByName('Till').AsString := sUsername;
+      DataModule1.tbl2.Post;
+ begin
+ frmAdmin.Show;
+ end;
+
+end;
+
+procedure TForm1.btnLogoutClick(Sender: TObject);
+begin
+      DataModule1.tbl2.Open;
+      DataModule1.tbl2.Insert;
+      DataModule1.tbl2.FieldByName('Till Clock LO').AsDateTime := TDateTime(Now);
+      DataModule1.tbl2.Post;
+      btnLogout.Enabled:= False;
+end;
+
+procedure TForm1.FormActivate(Sender: TObject);
+begin
+ btnLogout.Enabled:= True;
+end;
+
+end.

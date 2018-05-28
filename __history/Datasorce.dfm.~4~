@@ -1,0 +1,58 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 122
+  Width = 363
+  object con1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Password="";Data Source=C:\User' +
+      's\Annalize\Desktop\New folder\IT taak 2018\database.mdb;Mode=Sha' +
+      're Deny None;Persist Security Info=True;Jet OLEDB:System databas' +
+      'e="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";J' +
+      'et OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLE' +
+      'DB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=' +
+      '1;Jet OLEDB:New Database Password="";Jet OLEDB:Create System Dat' +
+      'abase=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't Cop' +
+      'y Locale on Compact=False;Jet OLEDB:Compact Without Replica Repa' +
+      'ir=False;Jet OLEDB:SFP=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 64
+    Top = 16
+  end
+  object qry1: TADOQuery
+    Connection = con1
+    Parameters = <>
+    Left = 104
+    Top = 16
+  end
+  object ds1: TDataSource
+    DataSet = qry1
+    Left = 16
+    Top = 16
+  end
+  object tbl1: TADOTable
+    Connection = con1
+    TableName = 'Table1'
+    Left = 144
+    Top = 16
+  end
+  object tbl2: TADOTable
+    Connection = con1
+    TableName = 'Table2'
+    Left = 184
+    Top = 16
+  end
+  object ds2: TDataSource
+    DataSet = tbl2
+    Left = 232
+    Top = 16
+  end
+  object qry2: TADOQuery
+    Connection = con1
+    Parameters = <>
+    Left = 272
+    Top = 16
+  end
+end

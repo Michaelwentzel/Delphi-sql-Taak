@@ -1,0 +1,80 @@
+object frmAdmin: TfrmAdmin
+  Left = 114
+  Top = 415
+  Caption = 'Admin'
+  ClientHeight = 541
+  ClientWidth = 1207
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object dbgrd2: TDBGrid
+    Left = 16
+    Top = 8
+    Width = 929
+    Height = 313
+    DataSource = DataModule1.ds1
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object btnAll: TButton
+    Left = 959
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'All'
+    TabOrder = 1
+    OnClick = btnAllClick
+  end
+  object btnWater: TButton
+    Left = 959
+    Top = 47
+    Width = 75
+    Height = 25
+    Caption = 'Filter'
+    TabOrder = 2
+    OnClick = btnWaterClick
+  end
+  object dbgrdTime: TDBGrid
+    Left = 16
+    Top = 328
+    Width = 497
+    Height = 185
+    DataSource = DataModule1.ds2
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object btnSortt: TButton
+    Left = 535
+    Top = 328
+    Width = 75
+    Height = 25
+    Caption = 'Sortt'
+    TabOrder = 4
+    OnClick = btnSorttClick
+  end
+  object cbbFilter: TComboBox
+    Left = 1040
+    Top = 49
+    Width = 145
+    Height = 21
+    TabOrder = 5
+    Items.Strings = (
+      'Coke'
+      'Water'
+      'Fanta')
+  end
+end

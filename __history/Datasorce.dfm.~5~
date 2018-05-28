@@ -1,0 +1,56 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 122
+  Width = 363
+  object con1: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\Us' +
+      'ers\Annalize\Desktop\Taak\database.mdb;Mode=Share Deny None;Exte' +
+      'nded Properties="";Persist Security Info=False;Jet OLEDB:System ' +
+      'database="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Passwo' +
+      'rd="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;' +
+      'Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transa' +
+      'ctions=1;Jet OLEDB:New Database Password="";Jet OLEDB:Create Sys' +
+      'tem Database=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Do' +
+      'n'#39't Copy Locale on Compact=False;Jet OLEDB:Compact Without Repli' +
+      'ca Repair=False;Jet OLEDB:SFP=False'
+    LoginPrompt = False
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 64
+    Top = 16
+  end
+  object qry1: TADOQuery
+    Connection = con1
+    Parameters = <>
+    Left = 104
+    Top = 16
+  end
+  object ds1: TDataSource
+    DataSet = qry1
+    Left = 16
+    Top = 16
+  end
+  object tbl1: TADOTable
+    Connection = con1
+    TableName = 'Table1'
+    Left = 144
+    Top = 16
+  end
+  object tbl2: TADOTable
+    Connection = con1
+    TableName = 'Table2'
+    Left = 184
+    Top = 16
+  end
+  object ds2: TDataSource
+    DataSet = tbl2
+    Left = 232
+    Top = 16
+  end
+  object qry2: TADOQuery
+    Connection = con1
+    Parameters = <>
+    Left = 272
+    Top = 16
+  end
+end

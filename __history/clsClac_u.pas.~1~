@@ -1,0 +1,38 @@
+unit clsClac_u;
+
+interface
+type
+
+TAccount = class(TObject)
+
+private
+fAccountNumber : string;
+fBalance       : Real;
+
+public
+
+constructor Create(SAccountNumbers:string);
+procedure DepositAmount(rDepAmount:Real);
+procedure WithdrawAmount(rAmount:Real);
+function GetAccountNumber:string;
+function GetBalance :Real;
+function doesQualify:Boolean;
+
+end;
+
+
+
+implementation
+uses
+SysUtils;
+
+
+
+
+
+
+
+
+
+
+end.

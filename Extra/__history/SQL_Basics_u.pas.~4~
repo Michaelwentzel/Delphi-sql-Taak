@@ -1,0 +1,259 @@
+unit SQL_Basics_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DBGrids, DB, ADODB;
+
+type
+  TfrmSql = class(TForm)
+    adoCon: TADOConnection;
+    adoQ: TADOQuery;
+    ds1: TDataSource;
+    dbgrd1: TDBGrid;
+    grp1: TGroupBox;
+    btnConnect: TButton;
+    btnShow1: TButton;
+    btnShow2: TButton;
+    edt1: TEdit;
+    edt2: TEdit;
+    edt3: TEdit;
+    edt4: TEdit;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    btnFilter: TButton;
+    btnNull: TButton;
+    btnShowBetween: TButton;
+    btnShowIn: TButton;
+    btnshowSort: TButton;
+    btnShowFormat: TButton;
+    btnShow2t: TButton;
+    btnClac: TButton;
+    btnGroup: TButton;
+    btnAdd: TButton;
+    procedure btnConnectClick(Sender: TObject);
+    procedure btnShow1Click(Sender: TObject);
+    procedure btnShow2Click(Sender: TObject);
+    procedure btnFilterClick(Sender: TObject);
+    procedure btnNullClick(Sender: TObject);
+    procedure btnShowBetweenClick(Sender: TObject);
+    procedure btnShowInClick(Sender: TObject);
+    procedure btnshowSortClick(Sender: TObject);
+    procedure btnShowFormatClick(Sender: TObject);
+    procedure btnShow2tClick(Sender: TObject);
+    procedure btnClacClick(Sender: TObject);
+    procedure btnGroupClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure dbgrd1CellClick(Column: TColumn);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmSql: TfrmSql;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmSql.btnAddClick(Sender: TObject);
+begin
+adoQ.Connection := adoCon;
+ds1.DataSet := adoQ;
+adoQ.Active := False;
+adoQ.SQL.Clear;
+adoQ.SQL.Add('INSERT INTO [Table2] (Till)');
+adoQ.SQL.Add('VALUES (''' + edt1.Text + ''')');
+adoQ.ExecSQL;
+adoQ.SQL.Clear;
+adoQ.SQL.Add('SELECT * FROM Table2');
+adoQ.Open;
+dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnClacClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model] , ([Cost] * 0.15) As [VAT] FROM [Table1]');
+      adoQ.Open;
+      TFloatField(adoQ.FieldByName('VAT')).currency := True;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnConnectClick(Sender: TObject);
+begin
+ try
+
+   adoCon.ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source='
+                             +'C:\Users\Annalize\Desktop\New folder\IT taak 2018\'
+                             + 'database.mdb;Persist Security Info=False';
+
+ adoCon.LoginPrompt := False;
+ adoCon.Open;
+ ShowMessage('Connection Successful');
+except
+  ShowMessage('Connection Unsuccessful');
+
+end;
+end;
+
+
+procedure TfrmSql.btnFilterClick(Sender: TObject);
+begin
+  if (edt1.Text <> '' ) and (edt2.Text = '') then
+    begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model] FROM [Table1]');
+      adoQ.SQL.Add('WHERE Make = ''' + edt1.Text +  '''');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+
+    end;
+  if (edt1.Text <> '') and (edt2.Text <> '' ) then
+    begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model] FROM [Table1]');
+      adoQ.SQL.Add('WHERE Make = ''' + edt1.Text +  ''' OR Make = '''
+                   + edt2.Text + '''');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+    end;
+
+  if (edt3.Text <> '') and (edt4.Text <> '' ) then
+   begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model] FROM [Table1]');
+      adoQ.SQL.Add('WHERE Make = ''' + edt3.Text +  ''''
+                   + 'AND Model = ''' + edt4.Text + '''');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+   end;
+
+
+end;
+
+procedure TfrmSql.btnGroupClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], SUM([Cost]) as [Total Cost] FROM [Table1]');
+      adoQ.SQL.Add('GROUP BY Make' );
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnNullClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model],[Supplier No] FROM [Table1]');
+      adoQ.SQL.Add('WHERE [Supplier No] IS Null');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShow1Click(Sender: TObject);
+begin
+  adoCon.Close;
+  frmSql.btnConnect.Click;
+  adoQ.Connection := adoCon;
+  ds1.DataSet := adoQ;
+  adoQ.SQL.Clear;
+  adoQ.SQL.Add('SELECT * FROM [Table1]');
+  adoQ.Open;
+  adoQ.Active := True;
+  dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShow2Click(Sender: TObject);
+begin
+  adoCon.Close;
+  frmSql.btnConnect.Click;
+  adoQ.Connection := adoCon;
+  ds1.DataSet := adoQ;
+  adoQ.SQL.Clear;
+  adoQ.SQL.Add('SELECT * FROM [Table2]');
+  adoQ.Open;
+  adoQ.Active := True;
+  dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShow2tClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model], [Sales Person], [Table2].Till') ;
+      adoQ.SQL.Add('FROM [Table1], [Table2]');
+      adoQ.SQL.Add('WHERE [Till] = [Table2].ID');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShowBetweenClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model], [Cost] FROM [Table1]');
+      adoQ.SQL.Add('WHERE Cost BETWEEN '+ edt3.Text + ' AND ' + edt4.Text);
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShowFormatClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model],[Cost] FROM [Table1]');
+      adoQ.Open;
+      TFloatField(adoQ.FieldByName('Cost')).currency := True;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnShowInClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT [Make], [Model] FROM [Table1]');
+      adoQ.SQL.Add('WHERE Make IN (' + edt1.Text + ')');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.btnshowSortClick(Sender: TObject);
+begin
+      ds1.DataSet := adoQ;
+      adoQ.SQL.Clear;
+      adoQ.SQL.Add('SELECT * FROM [Table1]');
+      adoQ.SQL.Add('ORDER BY Make ASC');
+      adoQ.Open;
+      adoQ.Active := True;
+      dbgrd1.DataSource := ds1;
+end;
+
+procedure TfrmSql.dbgrd1CellClick(Column: TColumn);
+var
+str : string;
+begin
+ str := Column.Field.Text;
+ ShowMessage(str);
+end;
+
+end.
