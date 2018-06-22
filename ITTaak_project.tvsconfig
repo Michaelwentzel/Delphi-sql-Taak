@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.clsMain_u" Type="System.String" Value="clsMain_u" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.ITTaak" Type="System.String" Value="ITTaak" Category="General" IsBrowsable="False" />
+</TgConfig>

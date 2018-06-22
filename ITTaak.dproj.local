@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018-05-30 20:21:44.004.pas,C:\Users\Annalize\Documents\RAD Studio\Projects\Unit2.pas=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\MainLogin_u.pas</Transaction>
+    <Transaction>2018-05-30 20:21:44.004.dfm,C:\Users\Annalize\Documents\RAD Studio\Projects\Unit2.dfm=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\MainLogin_u.dfm</Transaction>
+    <Transaction>2018-05-30 20:21:58.675.dproj,C:\Users\Annalize\Documents\RAD Studio\Projects\Project2.dproj=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\ITTaak.dproj</Transaction>
+    <Transaction>2018-05-30 20:22:42.834.pas,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.pas=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\clsMain_u.pas</Transaction>
+    <Transaction>2018-05-30 21:32:40.453.pas,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.pas=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\P.O.S_u.pas</Transaction>
+    <Transaction>2018-05-30 21:32:40.453.dfm,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.dfm=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\P.O.S_u.dfm</Transaction>
+    <Transaction>2018-05-30 21:35:22.719.pas,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.pas=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Stock_u.pas</Transaction>
+    <Transaction>2018-05-30 21:35:22.719.dfm,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.dfm=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Stock_u.dfm</Transaction>
+    <Transaction>2018-06-09 16:44:48.802.pas,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.pas=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Datamodule_u.pas</Transaction>
+    <Transaction>2018-06-09 16:44:48.802.dfm,C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Unit1.dfm=C:\Users\Annalize\Desktop\Michael Wentzel IT taak 2018 Finaal\Datamodule_u.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
